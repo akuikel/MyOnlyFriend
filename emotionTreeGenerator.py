@@ -1,20 +1,32 @@
 import json
-from anytree import Node, RenderTree
+from anytree import Node, RenderTree, PreOrderIter
 
-def build_tree(data, parent=None):
-    node = Node(data['name'], parent=parent)
-    if 'children' in data:
-        for child_data in data['children']:
-            build_tree(child_data, parent=node)
-    return node
+# Define EmotionNode class
+class EmotionNode:
+    def __init__(self, json_file):
+        with open(json_file) as f:
+            self.data = json.load(f)
+        self.node = self.build_tree(self.data)
+        self.root_node = self.get_root_node()
 
-# Read JSON file
-with open('emotionWheelTree.json') as f:
-    json_data = json.load(f)
+    def build_tree(self, data, parent=None):
+        node = Node(data['name'], parent=parent)
+        if 'children' in data:
+            for child_data in data['children']:
+                self.build_tree(child_data, parent=node)
+        return node
 
-# Build the tree
-root_node = build_tree(json_data)
+    def get_root_node(self):
+        node = self.node
+        while node.parent:
+            node = node.parent
+        return node
 
-# Print the tree structure
-for pre, _, node in RenderTree(root_node):
-    print("%s%s" % (pre, node.name))
+    def print_tree_structure(self):
+        for pre, _, node in RenderTree(self.root_node):
+            print("%s%s" % (pre, node.name))
+
+# Usage example
+if __name__ == "__main__":
+    emotion_tree = EmotionNode('emotionWheelTree.json')
+    emotion_tree.print_tree_structure()

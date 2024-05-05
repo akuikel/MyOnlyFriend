@@ -21,6 +21,9 @@ class EmotionNode:
         while node.parent:
             node = node.parent
         return node
+    
+    def get_all_emotions(self):
+        return [node.name for node in PreOrderIter(self.root_node) if node.is_root == False]
 
     def print_tree_structure(self):
         for pre, _, node in RenderTree(self.root_node):

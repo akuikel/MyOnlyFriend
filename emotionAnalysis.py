@@ -13,7 +13,7 @@ Omit any pre and post-text in your response. Format your response as a JSON list
 Omit any pre and post-text in your response.
 << JOURNAL ENTRY >>
 {journal_entry}
-
+g
 << EMOTIONS >>
 {emotion_list}
 
@@ -24,7 +24,7 @@ Omit any pre and post-text in your response.
 '''
 
 journal_entry= '''
-i feel like the end of the world because my girlfriend broke up with me as she saw a text between me and my ex. i love my girlfriend a lot. this was a mistake from my side. hope she forgives but it's been already over a month.
+i feel like the end of the world because i lost smone
 '''
 
 emotionList= [str(emotions) for emotions in emotion_tree.get_all_emotions()]

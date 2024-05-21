@@ -4,7 +4,7 @@ from emotionTreeGenerator import EmotionNode
 import google.generativeai as genai
 
 # Configure the Google API key
-os.environ['GOOGLE_API_KEY'] = "AIzaSyDaZ12RxmXsnJLSiIN5u6HGNA_1d--IW7k"
+os.environ['GOOGLE_API_KEY'] = "--IW7k"
 genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 # Initialize the emotion tree and Gemini model
